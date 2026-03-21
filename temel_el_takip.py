@@ -48,22 +48,22 @@ def detect_gesture(fingers):
 
 # --- KOMUT BİLGİLERİ ---
 GESTURE_INFO = {
-    "YUMRUK":    {"label": "DURDUR",   "icon": "STOP",  "color": (0, 80, 255)},
-    "ACIK_EL":   {"label": "BEKLE",    "icon": "PAUSE", "color": (0, 220, 180)},
-    "BIR_PARMAK":{"label": "SEC",      "icon": "SEL",   "color": (0, 255, 100)},
-    "IKI_PARMAK":{"label": "KAYDIRMA", "icon": "SCR",   "color": (0, 200, 255)},
-    "UC_PARMAK": {"label": "MENU",     "icon": "MNU",   "color": (180, 100, 255)},
+    "YUMRUK":    {"label": "YUMRUK",   "icon": "0",  "color": (0, 80, 255)},
+    "ACIK_EL":   {"label": "ACIK EL",    "icon": "1", "color": (0, 220, 180)},
+    "BIR_PARMAK":{"label": "ISARET",      "icon": "2",   "color": (0, 255, 100)},
+    "IKI_PARMAK":{"label": "IKI PARMAK", "icon": "3",   "color": (0, 200, 255)},
+    "UC_PARMAK": {"label": "UC PARMAK",     "icon": "4",   "color": (180, 100, 255)},
     "UNKNOWN":   {"label": "---",      "icon": "???",   "color": (80, 80, 80)},
 }
 
 
 #verilecek komutlar buraya gelecek
 KOMUTLAR = {
-    "YUMRUK":     lambda: print("⏹ DURDUR"),
-    "ACIK_EL":    lambda: print("✋ BEKLE"),
-    "BIR_PARMAK": lambda: print("☝ SEC"),
-    "IKI_PARMAK": lambda: print("✌ KAYDIRMA"),
-    "UC_PARMAK":  lambda: print("3 MENU"),
+    "YUMRUK":     lambda: print("YUMRUK"),
+    "ACIK_EL":    lambda: print("EL ACIK"),
+    "BIR_PARMAK": lambda: print("ISARET"),
+    "IKI_PARMAK": lambda: print("IKI PARMAK"),
+    "UC_PARMAK":  lambda: print("UC PARMAK"),
 }
 
 def execute_command(gesture):
@@ -215,11 +215,11 @@ def draw_side_panel(frame, h, w, gesture, color):
     cv2.line(frame, (px + 4, py + 24), (px + pw - 4, py + 24), color, 1)
 
     gestures_list = [
-        ("YUMRUK",     "STOP"),
-        ("ACIK_EL",    "PAUSE"),
-        ("BIR_PARMAK", "SEL"),
-        ("IKI_PARMAK", "SCRLL"),
-        ("UC_PARMAK",  "MENU"),
+        ("YUMRUK",     "0"),
+        ("ACIK_EL",    "1"),
+        ("BIR_PARMAK", "2"),
+        ("IKI_PARMAK", "3"),
+        ("UC_PARMAK",  "4"),
     ]
     for i, (g, lbl) in enumerate(gestures_list):
         gy = py + 44 + i * 28
