@@ -21,11 +21,11 @@ def on_result(result, output_image, timestamp_ms):
 def get_finger_states(hand_landmarks):
     lm = hand_landmarks
     return {
-        'basparmak': lm[4].x < lm[3].x,
-        'isaret':    lm[8].y < lm[6].y,
-        'orta':      lm[12].y < lm[10].y,
-        'yuzuk':     lm[16].y < lm[14].y,
-        'serce':     lm[20].y < lm[18].y,
+        'basparmak': lm[4].x > lm[3].x,
+        'isaret':    lm[8].y > lm[6].y,
+        'orta':      lm[12].y > lm[10].y,
+        'yuzuk':     lm[16].y > lm[14].y,
+        'serce':     lm[20].y > lm[18].y,
     }
 
 def count_fingers(fingers):
