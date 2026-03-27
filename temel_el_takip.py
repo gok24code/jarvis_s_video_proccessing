@@ -5,6 +5,8 @@ import os
 import time
 import math
 
+from io_device import *
+
 # --- MEDIAPIPE KURULUM ---
 BaseOptions = mp.tasks.BaseOptions
 HandLandmarker = mp.tasks.vision.HandLandmarker
@@ -61,8 +63,8 @@ GESTURE_INFO = {
 KOMUTLAR = {
     "YUMRUK":     lambda: print("YUMRUK"),
     "ACIK_EL":    lambda: print("EL ACIK"),
-    "BIR_PARMAK": lambda: print("ISARET"),
-    "IKI_PARMAK": lambda: print("IKI PARMAK"),
+    "BIR_PARMAK": lambda: click_mouse_down(),
+    "IKI_PARMAK": lambda: click_mouse_up(),
     "UC_PARMAK":  lambda: print("UC PARMAK"),
 }
 
