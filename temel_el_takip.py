@@ -4,8 +4,14 @@ import numpy as np
 import os
 import time
 import math
+import pyautogui as p
 
 from io_device import *
+
+# --- EKRAN AYARLARI ---
+SCREEN_W, SCREEN_H = p.size()
+p.PAUSE = 0 # Mouse hareketini akıcı hale getirir
+p.FAILSAFE = False # Köşelere gidince hata almamak için
 
 # --- MEDIAPIPE KURULUM ---
 BaseOptions = mp.tasks.BaseOptions
@@ -311,6 +317,12 @@ with HandLandmarker.create_from_options(options) as landmarker:
 
                 # Dönen tarama halkası
                 draw_gesture_ring(frame, cx, cy, 65, color, t=t)
+
+                # Mouse Kontrolü (İşaret parmağı ucu - Landmark 8)
+                index_tip = hand_landmarks[8]
+                screen_x = int(index_tip.x * SCREEN_W)
+                screen_y = int((1 - index_tip.y) * SCREEN_H) # Y eksenini ters çevir
+                drag_cursor(screen_x, screen_y)
 
                 # El üstü etiket
                 draw_corner_brackets(frame, cx - 45, cy - 80, 90, 25, color, size=8)
